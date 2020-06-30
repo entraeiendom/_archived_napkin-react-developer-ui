@@ -20,7 +20,7 @@ function FetchExamples() {
     }, []);
 
     const fetchMenu = async () =>  {
-      const result = await fetch(`${constants.APP_API_URL}/restaurant/menu/preorder`);
+      const result = await fetch(`${constants.APP_API_URL}/restaurant/menu/list/preorder`);
       const data = await result.json();
       setMenu(data);
       console.log('Menu for preorder', data)
