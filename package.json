@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "auth0-js": "^9.13.3",
+    "auth0-js": "^9.13.4",
     "axios": "^0.19.2",
     "moment": "^2.27.0",
     "react": "^16.6.0",
