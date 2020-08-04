@@ -2,5 +2,12 @@
 
 A small example on a react frontend leveraging the EntraSSO and EntraSSO APIs
 
-npm install
-npm start
+## Environment
+
+* Demo https://api-demo.entraos.io/
+
+## Developer introduction
+
+### Build and run locally
+
+* Run the app with `npm install && npm run start`
