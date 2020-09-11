@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "auth0-js": "^9.13.4",
-    "axios": "^0.19.2",
+    "axios": "^0.20.0",
     "moment": "^2.27.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
