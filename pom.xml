@@ -23,7 +23,47 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
-
+    <scm>
+        <developerConnection>scm:git:ssh://git@github.com/entraeiendom/napkin-react-developer-ui.git
+        </developerConnection>
+        <connection>scm:git:https://github.com/entraeiendom/napkin-react-developer-ui.git</connection>
+        <url>https://github.com/entraeiendom/napkin-react-developer-ui</url>
+        <tag>HEAD</tag>
+    </scm>
+    <repositories>
+        <!-- Needed for parent  -->
+        <repository>
+            <id>cantara-releases</id>
+            <name>Cantara Release Repository</name>
+            <url>https://mvnrepo.cantara.no/content/repositories/releases/</url>
+        </repository>
+        <repository>
+            <id>cantara-snapshots</id>
+            <name>Cantara Snapshot Repository</name>
+            <url>https://mvnrepo.cantara.no/content/repositories/snapshots/</url>
+        </repository>
+        <repository>
+            <id>entraos-releases</id>
+            <name>EntraOS Public Release Repository</name>
+            <url>https://nexus.entraos.io/content/repositories/entraosreleases/</url>
+        </repository>
+        <repository>
+            <id>entraos-snapshots</id>
+            <name>EntraOS Public Snapshot Repository</name>
+            <url>https://nexus.entraos.io/content/repositories/entraossnapshots/</url>
+        </repository>
+        <repository>
+            <id>entraos-public-releases</id>
+            <name>EntraOS Public Release Repository</name>
+            <url>https://nexus.entraos.io/content/repositories/releases/</url>
+        </repository>
+        <repository>
+            <id>entraos-public-snapshots</id>
+            <name>EntraOS Public Snapshot Repository</name>
+            <url>https://nexus.entraos.io/content/repositories/snapshots/</url>
+        </repository>
+    </repositories>
+         
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -137,4 +177,17 @@
         </plugins>
     </build>
 
+     <distributionManagement>
+        <repository>
+            <id>entraos</id>
+            <name>EntraOS Release Repository</name>
+            <url>https://nexus.entraos.io/content/repositories/entraosreleases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>entraos</id>
+            <name>EntraOS Snapshot Repository</name>
+            <url>https://nexus.entraos.io/content/repositories/entraossnapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+     
 </project>
