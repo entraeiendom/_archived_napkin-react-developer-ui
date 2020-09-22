@@ -23,6 +23,18 @@ class App extends Component {
       return;
     }*/
 
+    if(this.getUrlParameter('code')) {
+      await auth0Client.requestToken(this.getUrlParameter('code'))
+      .then(response => {
+        this.props.history.replace('/');
+        //this.props.history.push("/");
+      }).catch(error => {
+          
+      });
+    }
+
+    
+
     if(constants.OAUTH_AUTO_RENEW_TOKEN) {
     var intervalId = setInterval(async () => {
         console.log('validating session...')       
@@ -47,6 +59,14 @@ class App extends Component {
 
 
  }
+
+ getUrlParameter(name) {
+  name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+  var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+
+  var results = regex.exec(this.props.location.search);
+  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
 
   componentWillUnmount() {
     clearInterval(this.state.intervalId);
