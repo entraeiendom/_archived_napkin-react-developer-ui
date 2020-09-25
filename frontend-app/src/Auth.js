@@ -6,9 +6,9 @@ class Auth {
   constructor() {
     this.auth0 = new auth0.WebAuth({
       // the following three lines MUST be updated
-      domain: constant.OAUTH_DOMAIN,
-      clientID: constant.OAUTH_CLIENT_ID,
-      redirectUri: constant.OAUTH_REDIRECT_URI,
+      domain: window.env.OAUTH_DOMAIN,
+      clientID: window.env.OAUTH_CLIENT_ID,
+      redirectUri: window.env.OAUTH_REDIRECT_URI,
       scope: constant.OAUTH_SCOPE,
       responseType: 'code'
     });
@@ -79,10 +79,10 @@ parseJwt(token) {
 
 refreshToken(refresh_token) {
   
-  let base64Credentials = Buffer.from(constant.OAUTH_CLIENT_ID+ ':' + 'optional').toString('base64');
+  let base64Credentials = Buffer.from(window.env.OAUTH_CLIENT_ID+ ':' + 'optional').toString('base64');
   return new Promise((resolve, reject) => {
     this.request({
-      url: `https://${constant.OAUTH_DOMAIN}/token?grant_type=refresh_token&refresh_token=${refresh_token}`,
+      url: `https://${window.env.OAUTH_DOMAIN}/token?grant_type=refresh_token&refresh_token=${refresh_token}`,
       method: 'POST',
       headers: {
         'Authorization': 'Basic ' + base64Credentials,
@@ -98,10 +98,10 @@ refreshToken(refresh_token) {
 
 requestToken(authorization_code) {
   
-    let base64Credentials = Buffer.from(constant.OAUTH_CLIENT_ID+ ':' + 'optional').toString('base64');
+    let base64Credentials = Buffer.from(window.env.OAUTH_CLIENT_ID+ ':' + 'optional').toString('base64');
     return new Promise((resolve, reject) => {
       this.request({
-        url: `https://${constant.OAUTH_DOMAIN}/token?grant_type=authorization_code&code=${authorization_code}`,
+        url: `https://${window.env.OAUTH_DOMAIN}/token?grant_type=authorization_code&code=${authorization_code}`,
         method: 'POST',
         headers: {
           'Authorization': 'Basic ' + base64Credentials,
@@ -130,7 +130,7 @@ requestToken(authorization_code) {
 
   signOut() {
     //log out SSO
-    fetch(`https://${constant.OAUTH_DOMAIN}/logout`, {
+    fetch(`https://${window.env.OAUTH_DOMAIN}/logout`, {
       method: 'GET'
     });
 

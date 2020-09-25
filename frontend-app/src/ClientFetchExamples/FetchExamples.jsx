@@ -20,14 +20,14 @@ function FetchExamples() {
     }, []);
 
     const fetchMenu = async () =>  {
-      const result = await fetch(`${constants.APP_API_URL}/restaurant/menu/list/preorder`);
+      const result = await fetch(`${window.env.APP_API_URL}/restaurant/menu/list/preorder`);
       const data = await result.json();
       setMenu(data);
       console.log('Menu for preorder', data)
     }
 
     const fetchRooms = async () =>  {
-      const result = await fetch(`${constants.APP_API_URL}/booking/rooms`);
+      const result = await fetch(`${window.env.APP_API_URL}/booking/rooms`);
       const data = await result.json();
       setRooms(data);
       console.log('Rooms available for booking', data)

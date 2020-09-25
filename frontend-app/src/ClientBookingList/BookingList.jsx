@@ -18,7 +18,7 @@ function BookingList() {
     }, [lastBooking]);
 
     const fetchData = async () =>  {
-      const result = await fetch(`${constants.APP_API_URL}/booking/reservations/list`);
+      const result = await fetch(`${window.env.APP_API_URL}/booking/reservations/list`);
       const data = await result.json();
       setBookings(data);
     }

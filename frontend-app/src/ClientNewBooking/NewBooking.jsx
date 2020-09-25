@@ -46,7 +46,7 @@ function NewBooking(o) {
     };
     ;
 
-    const result = await fetch(`${constants.APP_API_URL}/booking/create`,{
+    const result = await fetch(`${window.env.APP_API_URL}/booking/create`,{
       method: 'POST',
       headers: {
         'Accept': 'application/json',
