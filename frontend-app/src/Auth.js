@@ -144,6 +144,7 @@ requestToken(authorization_code) {
 
   validateAuth() {
     return new Promise((resolve, reject) => {
+      resolve();
       if(this.expiresAt && new Date().getTime() < this.expiresAt - 30*1000) { //30 seconds before it expires
         resolve();
       } else {
