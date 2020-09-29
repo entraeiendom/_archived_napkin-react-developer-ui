@@ -48,7 +48,7 @@ class App extends Component {
                     clearInterval(this.state.intervalId);
 
                 });
-            }, 500);
+            }, 4000);
 
             this.setState({intervalId: intervalId});
         } else {
