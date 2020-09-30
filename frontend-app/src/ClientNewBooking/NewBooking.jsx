@@ -30,6 +30,33 @@ function NewBooking(o) {
      }
   };
 
+  const postBookingV2 = async () =>  {
+
+    if (!auth0Client.isAuthenticated()) {
+      Alert.error('Login required');
+      return;
+    }
+    let body = {
+      "room": {
+        "resourceId": ROOM_ID
+      },
+      fromTime: fromTime.toISOString(),
+      toTime: toTime.toISOString()
+    };
+
+    const result = await fetch(`${window.env.APP_API_URL}/booking/reservation/create`,{
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${auth0Client.getAccessToken()}`
+      },
+      body: JSON.stringify(body)
+    });
+    const data = await result.json();
+    o.update(data)
+  }
+
   const postBooking = async () =>  {
 
     if (!auth0Client.isAuthenticated()) {
@@ -79,6 +106,7 @@ function NewBooking(o) {
         </span>
       </div>
       <p onClick={postBooking}><strong>Click here to book {fromTime.format(FORMAT)} to {toTime.format(FORMAT)}</strong></p>
+      <p onClick={postBookingV2}><strong>Click here to book {fromTime.format(FORMAT)} to {toTime.format(FORMAT)}</strong></p>
     </div>
   );
 }
