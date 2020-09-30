@@ -106,7 +106,7 @@ function NewBooking(o) {
         </span>
       </div>
       <p onClick={postBooking}><strong>Click here to book {fromTime.format(FORMAT)} to {toTime.format(FORMAT)}</strong></p>
-      <p onClick={postBookingV2}><strong>Click here to book {fromTime.format(FORMAT)} to {toTime.format(FORMAT)}</strong></p>
+      <p onClick={postBookingV2}>[V2-API] Click here to book {fromTime.format(FORMAT)} to {toTime.format(FORMAT)}</p>
     </div>
   );
 }
