@@ -144,9 +144,9 @@ requestToken(authorization_code) {
 
   validateAuth() {
     return new Promise((resolve, reject) => {
-      if(this.expiresAt && new Date().getTime() < this.expiresAt - 30*1000) { //30 seconds before it expires
-        resolve();
-      } else {
+//      if(this.expiresAt && new Date().getTime() < this.expiresAt - 30*1000) { //30 seconds before it expires
+//        resolve();
+//      } else {
         if(localStorage.getItem(constant.LOCALSTORAGE_REFRESH_TOKEN)){
            this.refreshToken(localStorage.getItem(constant.LOCALSTORAGE_REFRESH_TOKEN)).then(response => {
             console.log('refresh_token called successfully')
@@ -157,7 +157,7 @@ requestToken(authorization_code) {
         } else {
           reject({error: 'login_required'})
         }
-      }
+//      }
     });
   }
 }
