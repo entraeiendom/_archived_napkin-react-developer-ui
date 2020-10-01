@@ -79,7 +79,6 @@ class App extends Component {
                        timeout={3000}
                        position='top-right' effect='slide' offset={65}/>
 
-
                 <p>What to do?</p>
                 <ul>
                     <li><a href={`https://entrasso-${window.env.APP_ENVIRONMENT_NAME}.entraos.io/sso/signup`}>Signup</a>
@@ -87,7 +86,7 @@ class App extends Component {
                 </ul>
                 <FetchExamples/>
                 <BookingList/>
-                <br/> https://api-demo.entraos.io/booking/health
+                <br/>
                 <p>Other useful links</p>
                 <ul>
                     <li><a href={`https://swagger-devtest.entraos.io/?urls.primaryName=Booking%20API`}>Swagger API

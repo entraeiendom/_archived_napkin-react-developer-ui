@@ -10,16 +10,45 @@ function FetchExamples() {
 
   const [rooms, setRooms] = useState([]);
   const [menu, setMenu] = useState([]);
+  const [baseline, setBaseline] = useState({});
 
 
     useEffect(() => {
 
       fetchMenu();
       fetchRooms();
+      fetchHelloWorld();
+      fetchUser();
 
     }, []);
 
-    const fetchMenu = async () =>  {
+  const fetchUser = async () =>  {
+    const response = await fetch(`${window.env.APP_API_URL}/api/integrationpoint`);
+    const authenticatedResponse = await response.json();
+
+    const b = {
+      ...baseline ,
+      "authenticated": authenticatedResponse
+    };
+    setBaseline(b);
+    console.log('User: Baseline info', baseline)
+  }
+
+  const fetchHelloWorld = async () =>  {
+
+    const response = await fetch(`${window.env.APP_API_URL}/api/helloworld`);
+    const unauthenticatedResponse = await response.json();
+
+    const b = {
+      ...baseline ,
+      "unauthenticated": unauthenticatedResponse,
+    };
+    setBaseline(b);
+    console.log('HelloWorld: Baseline info', baseline)
+  }
+
+
+  const fetchMenu = async () =>  {
       const result = await fetch(`${window.env.APP_API_URL}/restaurant/menu/list/preorder`);
       const data = await result.json();
       setMenu(data);
