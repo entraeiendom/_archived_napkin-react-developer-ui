@@ -31,7 +31,7 @@ class Auth {
 
   getAccessToken() {
     if(!this.access_token && localStorage.getItem(constant.LOCALSTORAGE_ACCESS_TOKEN)) {
-      this.access_token = this.parseJwt(localStorage.getItem(constant.LOCALSTORAGE_ACCESS_TOKEN)) 
+      this.access_token = localStorage.getItem(constant.LOCALSTORAGE_ACCESS_TOKEN)
     }
     return this.access_token;
   }
@@ -122,7 +122,6 @@ requestToken(authorization_code) {
     this.access_token = response.access_token;
     this.expiresAt = access_token_payload.exp * 1000;
     this.profile = { ...id_token_payload, 'name': `${id_token_payload.first_name} ${id_token_payload.last_name}` };
-
     localStorage.setItem(constant.LOCALSTORAGE_ACCESS_TOKEN, response.access_token);
     localStorage.setItem(constant.LOCALSTORAGE_REFRESH_TOKEN, response.refresh_token);
     localStorage.setItem(constant.LOCALSTORAGE_ID_TOKEN, response.id_token);
