@@ -2,6 +2,7 @@ import React, { useState, useEffect }  from 'react'
 import moment from 'moment'
 import NewBooking from '../ClientNewBooking/NewBooking'
 import * as constants from '../Constants'
+import auth0Client from "../Auth";
 
 // Documentation available at https://swagger-devtest.entraos.io/
 
@@ -23,7 +24,19 @@ function FetchExamples() {
     }, []);
 
   const fetchUser = async () =>  {
-    const response = await fetch(`${window.env.APP_API_URL}/api/integrationpoint`);
+    let headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      };
+    if (auth0Client.isAuthenticated()){
+      headers = {
+        ...headers,
+        'Authorization': `Bearer ${auth0Client.getAccessToken()}`
+      }
+    };
+    const response = await fetch(`${window.env.APP_API_URL}/api/integrationpoint`,{
+      headers: headers
+    } );
     const authenticatedResponse = await response.json();
 
     const b = {
