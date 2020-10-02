@@ -34,7 +34,7 @@ function FetchExamples() {
         'Authorization': `Bearer ${auth0Client.getAccessToken()}`
       }
     };
-    const response = await fetch(`${window.env.APP_API_URL}/api/integrationpoint`,{
+    const response = await fetch(`${window.env.APP_API_URL}/baseline/integrationpoint`,{
       headers: headers
     } );
     const authenticatedResponse = await response.json();
@@ -49,7 +49,7 @@ function FetchExamples() {
 
   const fetchHelloWorld = async () =>  {
 
-    const response = await fetch(`${window.env.APP_API_URL}/api/helloworld`);
+    const response = await fetch(`${window.env.APP_API_URL}/baseline/helloworld`);
     const unauthenticatedResponse = await response.json();
 
     const b = {
