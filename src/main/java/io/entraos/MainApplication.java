@@ -12,7 +12,7 @@ public class MainApplication extends SpringBootServletInitializer {
     public static void main(String[] args) {
         SpringApplication.run(MainApplication.class, args);
         System.out.println("Napkin Developer UI - started on port 3000");
-        System.out.println("Napkin Developer UI - health http://localhost:3000/api/napkin/health");
+        System.out.println("Napkin Developer UI - health http://localhost:3000/health");
     }
 
 
