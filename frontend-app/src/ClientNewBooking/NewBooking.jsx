@@ -37,9 +37,7 @@ function NewBooking(o) {
       return;
     }
     let body = {
-      "room": {
-        "resourceId": ROOM_ID
-      },
+      resourceId: ROOM_ID,
       fromTime: fromTime.toISOString(),
       toTime: toTime.toISOString()
     };
