@@ -21,7 +21,7 @@ public class HealthResource {
     private static final String applicationInstanceName = MainApplication.APPLICATION_NAME;
 
 
-    private HealthReport report = new HealthReport("no.entra.entraos.api", applicationInstanceName, applicationInstanceName);
+    private HealthReport report = new HealthReport("io.entraos", applicationInstanceName, applicationInstanceName);
     public static final String STATUS_KEY = "Status";
     public static final String IP = "ip";
     public static final String NOW_KEY = "now";
