@@ -14,22 +14,6 @@ function NewBooking(o) {
   const originalToTime = moment().startOf('hour').add(2, 'hour');
   const [toTime, setToTime] = useState(originalToTime);
 
-
-  const standard = {
-    "fromTime": "2020-04-17T20:30:00Z",
-    "toTime": "2020-04-17T21:00:00Z",
-    "room": {
-      "resourceId": ROOM_ID
-    },
-    "participantsMap": {},
-    "participantsFoodMap": {},
-    "participantsKeyMap": {},
-    "host": {
-         "id": "b1fbb65d-5a27-4eab-9fb5-8c7f4bf8a414",
-         "firstName": "Firstname",
-     }
-  };
-
   const postBookingV2 = async () =>  {
 
     if (!auth0Client.isAuthenticated()) {
@@ -55,35 +39,6 @@ function NewBooking(o) {
     o.update(data)
   }
 
-  const postBooking = async () =>  {
-
-    if (!auth0Client.isAuthenticated()) {
-      Alert.error('Login required');
-      return;
-    }
-
-    console.log(`Posting a booking request for: `)
-
-    let body = {
-      ...standard,
-      fromTime: fromTime.toISOString(),
-      toTime: toTime.toISOString()
-    };
-    ;
-
-    const result = await fetch(`${window.env.APP_API_URL}/booking/create`,{
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${auth0Client.getAccessToken()}`
-    },
-      body: JSON.stringify(body)
-    });
-    const data = await result.json();
-    o.update(data)
-  }
-
   const update = function(setter, e){
     const newTime = moment(e.target.value, FORMAT)
     setter(newTime);
@@ -103,8 +58,7 @@ function NewBooking(o) {
         <input onChange={(e) => update(setToTime, e)} type="text"></input>
         </span>
       </div>
-      <p onClick={postBooking}><strong>Click here to book {fromTime.format(FORMAT)} to {toTime.format(FORMAT)}</strong></p>
-      <p onClick={postBookingV2}>[V2-API] Click here to book {fromTime.format(FORMAT)} to {toTime.format(FORMAT)}</p>
+      <p onClick={postBookingV2}><strong>[V2-API] Click here to book {fromTime.format(FORMAT)} to {toTime.format(FORMAT)}</strong></p>
     </div>
   );
 }
