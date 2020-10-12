@@ -108,6 +108,7 @@ class App extends Component {
                         Simulator</a></li>
                 </ul>
                 <div>{`Env: ${window.env.APP_ENVIRONMENT_NAME}`}</div>
+                <div>Icons made by <a href="https://www.flaticon.com/authors/pause08" title="Pause08">Pause08</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></div>
             </div>
 
         );
