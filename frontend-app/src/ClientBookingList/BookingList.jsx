@@ -34,10 +34,12 @@ function BookingList() {
           bookings
           .sort((a,b) => moment(a.fromTime).isAfter(moment(b.fromTime)))
           .map((b, i) => {
-            return (
+              const roominfo = b.room ? `Room '${b.room.name}' with resourceId ${b.room.resourceId}` : "<strong>Undefined room<strong>";
+              const hostinfo = b.host ? `booked by ${b.host.firstName}` : "booked by <strong>undefined host<strong>";
+              return (
               <li key={i}>
-                <span>Room '{b.room.name}' with resourceId {b.room.resourceId} </span>
-                <span>booked by {b.host.firstName} </span>
+                <span>{roominfo} </span>
+                <span>{hostinfo} </span>
                 <span>starting at {moment(b.fromTime).format('DD.MM.YY HH:mm')} </span>
                 <span>ending at {moment(b.toTime).format('DD.MM.YY HH:mm')} </span>
                 <span>(duration: {moment(b.fromTime).to(moment(b.toTime), true) }) </span>
