@@ -18,7 +18,6 @@ function FetchExamples() {
 
       fetchMenu();
       fetchRooms();
-      fetchHelloWorld();
       fetchUser();
 
     }, []);
@@ -45,19 +44,6 @@ function FetchExamples() {
     };
     setBaseline(b);
     console.log('User: Baseline info', baseline)
-  }
-
-  const fetchHelloWorld = async () =>  {
-
-    const response = await fetch(`${window.env.APP_API_URL}/baseline/helloworld`);
-    const unauthenticatedResponse = await response.json();
-
-    const b = {
-      ...baseline ,
-      "unauthenticated": unauthenticatedResponse,
-    };
-    setBaseline(b);
-    console.log('HelloWorld: Baseline info', baseline)
   }
 
 
