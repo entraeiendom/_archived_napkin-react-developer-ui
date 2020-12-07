@@ -2,6 +2,7 @@ import React, { useState, useEffect }  from 'react'
 import moment from 'moment'
 import NewBooking from '../ClientNewBooking/NewBooking'
 import * as constants from '../Constants'
+import auth0Client from "../Auth";
 
 
 
@@ -18,9 +19,22 @@ function BookingList() {
     }, [lastBooking]);
 
     const fetchData = async () =>  {
-      const result = await fetch(`${window.env.APP_API_URL}/booking/reservations/list`);
-      const data = await result.json();
-      setBookings(data);
+        let headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        };
+        if (auth0Client.isAuthenticated()){
+            headers = {
+                ...headers,
+                'Authorization': `Bearer ${auth0Client.getAccessToken()}`
+            }
+        };
+        const result = await fetch(`${window.env.APP_API_URL}/booking/reservations/list`,{
+            headers: headers
+        } );
+
+        const data = await result.json();
+        setBookings(data);
     }
 
 
