@@ -9,6 +9,8 @@ import FetchExamples from './ClientFetchExamples/FetchExamples';
 import BookingList from './ClientBookingList/BookingList';
 import * as constants from './Constants'
 import auth0Client from './Auth';
+import SensorLookupForUser from "./Sensors/fetchSensorsForUsers";
+
 
 class App extends Component {
     constructor(props) {
@@ -86,6 +88,7 @@ class App extends Component {
                 </ul>
                 <FetchExamples/>
                 <BookingList/>
+                <SensorLookupForUser/>
                 <br/>
                 <p>Other useful links</p>
                 <ul>
