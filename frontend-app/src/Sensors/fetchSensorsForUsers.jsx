@@ -1,41 +1,63 @@
-
-import React, { useState, useEffect }  from 'react'
-import * as API from './api'
+import React, {useState, useEffect} from 'react'
+import moment from 'moment'
+import NewBooking from '../ClientNewBooking/NewBooking'
+import * as constants from '../Constants'
 import auth0Client from "../Auth";
-import Alert from "react-s-alert";
 
-class SensorLookupForUser extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            sensors: ''
-        }
 
-        this.handleClick = this.handleClick.bind(this);
+function SensorLookupForUser() {
+    const realEstate = "U2";
 
-    }
-    handleClick() {
+    const [sensors, setSensors] = useState([]);
+
+
+    useEffect(() => {
+
+        fetchData();
+
+    }, []);
+
+    const fetchData = async () => {
+        let headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        };
         if (!auth0Client.isAuthenticated()) {
-            Alert.error('Login required');
-            return;
+            setSensors([]);
+        } else {
+            headers = {
+                ...headers,
+                'Authorization': `Bearer ${auth0Client.getAccessToken()}`
+            };
+            const result = await fetch(`https://observation-devtest.entraos.io/subscription/sensor/u2`, {
+                headers: headers
+            });
+
+            const data = await result.json();
+            setSensors(data);
         }
-        const candidates = API.getSensorCandidates('U2');
-        console.log('Click happened' + candidates);
-
-        this.setState({
-            sensors: candidates
-        });
     }
 
-    render() {
-        return (
-            <div>
-                <h3>Sensor subscription candidates</h3>
-                <button onClick={this.handleClick}>Get sensor candidates</button>
-                <p>{this.state.sensors}</p>
-            </div>
-        )
-    }
+
+    return (
+        <div>
+            <h3>Sensors in {realEstate}:</h3>
+            <ul>
+                {
+                    sensors
+                        .map((sensor, i) => {
+                            console.log(sensor);
+                            return (
+                                <li key={i}>
+                                    <span>Building {sensor.building}, floor {sensor.floor}, room {sensor.placementRoom} has sensor of type {sensor.sensorType} and id {sensor.recId}</span>
+                                </li>
+                            )
+                        })
+                }
+            </ul>
+        </div>
+    );
 }
+
 
 export default SensorLookupForUser;
