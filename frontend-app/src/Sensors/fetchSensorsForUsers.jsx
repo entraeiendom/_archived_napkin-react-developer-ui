@@ -29,7 +29,7 @@ function SensorLookupForUser() {
                 ...headers,
                 'Authorization': `Bearer ${auth0Client.getAccessToken()}`
             };
-            const result = await fetch(`https://observation-devtest.entraos.io/subscription/sensor/u2`, {
+            const result = await fetch(`https://observation-devtest.entraos.io/subscription/sensor/U2`, {
                 headers: headers
             });
 
