@@ -31,7 +31,7 @@ const SensorLookupForUser = (props) => {
                 ...headers,
                 'Authorization': `Bearer ${auth0Client.getAccessToken()}`
             };
-            const result = await fetch(`https://observation-devtest.entraos.io/subscription/sensor/${realEstate}`, {
+            const result = await fetch(`${window.env.APP_API_URL}/subscription/sensor/${realEstate}`, {
                 headers: headers
             });
 
