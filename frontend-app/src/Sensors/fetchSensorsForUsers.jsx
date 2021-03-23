@@ -5,9 +5,11 @@ import * as constants from '../Constants'
 import auth0Client from "../Auth";
 
 
-function SensorLookupForUser() {
-    const realEstate = "U2";
-
+const SensorLookupForUser = (props) => {
+    let realEstate = "U2";
+    if (props.realEstate){
+        realEstate = props.realEstate;
+    }
     const [sensors, setSensors] = useState([]);
 
 
@@ -29,7 +31,7 @@ function SensorLookupForUser() {
                 ...headers,
                 'Authorization': `Bearer ${auth0Client.getAccessToken()}`
             };
-            const result = await fetch(`https://observation-devtest.entraos.io/subscription/sensor/U2`, {
+            const result = await fetch(`https://observation-devtest.entraos.io/subscription/sensor/${realEstate}`, {
                 headers: headers
             });
 

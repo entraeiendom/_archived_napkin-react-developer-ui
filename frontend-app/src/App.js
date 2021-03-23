@@ -88,7 +88,9 @@ class App extends Component {
                 </ul>
                 <FetchExamples/>
                 <BookingList/>
-                <SensorLookupForUser/>
+                <SensorLookupForUser realEstate="U2"/>
+                <SensorLookupForUser realEstate="JurFak"/>
+
                 <br/>
                 <p>Other useful links</p>
                 <ul>
