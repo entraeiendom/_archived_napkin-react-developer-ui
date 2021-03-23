@@ -28,6 +28,7 @@ public class EnvironmentController {
         String environment = springEnv.getProperty("environment");
         String oauthClientId = springEnv.getProperty("oauthClientId");
         String apiUrl = springEnv.getProperty("apiUrl");
+        String observationApiUrl = springEnv.getProperty("observationApiUrl");
         String oauthDomain = springEnv.getProperty("oauthDomain");
 
         InputStream resource = new ClassPathResource(
@@ -41,6 +42,7 @@ public class EnvironmentController {
 
             this.html = html.replace("<head>", "<head><script id=\"environment\">window.env = {" +
                     "APP_API_URL:\""+apiUrl+"\"," +
+                    "OBSERVATION_API_URL:\""+observationApiUrl+"\"," +
                     "APP_ENVIRONMENT_NAME:\""+environment+"\"," +
                     "OAUTH_CLIENT_ID:\""+oauthClientId+"\"," +
                     "OAUTH_DOMAIN:\""+oauthDomain+"\"" +
