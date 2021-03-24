@@ -31,7 +31,7 @@ const SensorLookupForUser = (props) => {
                 ...headers,
                 'Authorization': `Bearer ${auth0Client.getAccessToken()}`
             };
-            const result = await fetch(`${window.env.OBSERVATION_API_URL}/subscription/whitelist`, {
+            const result = await fetch(`${window.env.OBSERVATION_API_URL}/subscription/sensor/${realEstate}`, {
                 headers: headers
             });
 
