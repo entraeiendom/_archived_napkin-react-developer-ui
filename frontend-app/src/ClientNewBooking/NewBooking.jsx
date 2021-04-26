@@ -58,7 +58,7 @@ function NewBooking(o) {
         <input onChange={(e) => update(setToTime, e)} type="text"></input>
         </span>
       </div>
-      <p onClick={postBookingV2}><strong>[V2-API] Click here to book {fromTime.format(FORMAT)} to {toTime.format(FORMAT)}</strong></p>
+      <p onClick={postBookingV2}><strong>Click here to book {fromTime.format(FORMAT)} to {toTime.format(FORMAT)}</strong></p>
     </div>
   );
 }
