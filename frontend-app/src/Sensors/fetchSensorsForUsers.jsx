@@ -1,7 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import moment from 'moment'
-import NewBooking from '../ClientNewBooking/NewBooking'
-import * as constants from '../Constants'
 import auth0Client from "../Auth";
 
 
