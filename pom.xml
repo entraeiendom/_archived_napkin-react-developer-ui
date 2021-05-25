@@ -4,7 +4,7 @@
 
     <groupId>io.entraos</groupId>
     <artifactId>napkin-ui</artifactId>
-    <version>0.1.19-SNAPSHOT</version>
+    <version>0.1.19</version>
     <packaging>jar</packaging>
 
     <name>napkin-ui</name>
@@ -14,7 +14,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.0.1.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath /> <!-- lookup parent from repository -->
     </parent>
 
     <properties>
@@ -27,7 +27,7 @@
         </developerConnection>
         <connection>scm:git:https://github.com/entraeiendom/napkin-react-developer-ui.git</connection>
         <url>https://github.com/entraeiendom/napkin-react-developer-ui</url>
-        <tag>HEAD</tag>
+        <tag>napkin-ui-0.1.19</tag>
     </scm>
     <repositories>
         <!-- Needed for parent  -->
@@ -144,7 +144,7 @@
                         <configuration>
                             <target>
                                 <copy todir="${project.build.directory}/classes/public">
-                                    <fileset dir="${project.basedir}/frontend-app/build"/>
+                                    <fileset dir="${project.basedir}/frontend-app/build" />
                                 </copy>
                             </target>
                         </configuration>
