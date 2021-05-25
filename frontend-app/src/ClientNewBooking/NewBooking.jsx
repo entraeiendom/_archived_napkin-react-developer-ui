@@ -33,7 +33,8 @@ function NewBooking(o) {
       resourceId: parseInt(roomId),
       fromTime: fromTime.toISOString(),
       toTime: toTime.toISOString(),
-      contractId: contractId
+      contractId: contractId,
+      participants: []
     };
 
     console.log("Booking-body", body);
