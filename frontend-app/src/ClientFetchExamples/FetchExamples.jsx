@@ -93,7 +93,7 @@ function FetchExamples() {
                             return (
                                 <li key={i}>
                                     <span>{room.name} med resourceId {room.resourceId} tilhører slackchannel {room.slackChannelName}.
-                                        Kapasitet på {room.maxPersons} og timepris {room.Hourly.net_price}</span>
+                                        Kapasitet på {room.maxPersons} og timepris {room.priceList.Hourly.net_price}</span>
                                 </li>
                             )
                         })
