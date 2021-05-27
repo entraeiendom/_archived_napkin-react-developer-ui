@@ -4,7 +4,7 @@ import auth0Client from "../Auth";
 
 const SensorLookupForUser = (props) => {
     let realEstate = "U2";
-    if (props.realEstate){
+    if (props.realEstate) {
         realEstate = props.realEstate;
     }
     const [sensors, setSensors] = useState([]);
@@ -32,8 +32,11 @@ const SensorLookupForUser = (props) => {
                 headers: headers
             });
 
-            const data = await result.json();
-            setSensors(data);
+            if(result.ok){
+                const data = await result.json();
+                setSensors(data);
+            }
+
         }
     }
 
