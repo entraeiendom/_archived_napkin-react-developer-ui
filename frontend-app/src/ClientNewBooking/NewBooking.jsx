@@ -1,4 +1,4 @@
-import React, { useState }  from 'react'
+import React, {useState} from 'react'
 import moment from 'moment'
 import auth0Client from '../Auth'
 import Alert from 'react-s-alert';
@@ -14,6 +14,7 @@ function NewBooking(o) {
 
   const [roomId, setRoomId] = useState("1237007781");
   const [contractId, setContractId] = useState("my-contract-uuid");
+  const [participants, setParticipants] = useState([]);
 
   const postBookingV2 = async () =>  {
 
@@ -34,7 +35,7 @@ function NewBooking(o) {
       fromTime: fromTime.toISOString(),
       toTime: toTime.toISOString(),
       contractId: contractId,
-      participants: []
+      participants: participants
     };
 
     console.log("Booking-body", body);
@@ -55,6 +56,13 @@ function NewBooking(o) {
     const newTime = moment(e.target.value, FORMAT)
     setter(newTime);
   }
+
+  const updateParticipants = function(e){
+    const emailString = e.target.value;
+    const emails = emailString.replace(" ", "").split(",");
+    setParticipants(emails);
+  }
+
 
   return (
     <div>
@@ -81,6 +89,11 @@ function NewBooking(o) {
       <div>Suggested ending time: {originalToTime.format(FORMAT)}
         <span> Change to ({FORMAT}):
         <input onChange={(e) => update(setToTime, e)} type="text"></input>
+        </span>
+      </div>
+      <div>Any participants?: {participants}
+        <span> Split with , if multiple participants:
+        <input onChange={(e) => updateParticipants(e)} type="text"></input>
         </span>
       </div>
       <p onClick={postBookingV2}><strong>Click here to book roomId '{roomId}' from {fromTime.format(FORMAT)} to {toTime.format(FORMAT)} using contract '{contractId}'</strong></p>
