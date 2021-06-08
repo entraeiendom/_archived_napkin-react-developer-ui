@@ -66,7 +66,7 @@ function BookingList() {
   return (
     <div>
       <NewBooking update={setLastBooking} />
-        <h3>All my bookings</h3>
+        <h3>My bookings (from yesterday and the next 7 days)</h3>
         <ul>
             {
                 myBookings
