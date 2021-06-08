@@ -52,7 +52,8 @@ function BookingList() {
             }
 
             const result = await fetch(`${window.env.APP_API_URL}/booking/reservations/list/${id}`,{
-                headers: headers
+                headers: headers,
+                method: 'POST'
             } );
 
             const data = await result.json();
