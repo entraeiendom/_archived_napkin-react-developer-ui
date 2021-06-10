@@ -61,6 +61,21 @@ function BookingList() {
 
     }
 
+    const deleteBooking = async (id) =>  {
+
+        console.log("Delete booking with id", id);
+        const result = await fetch(`${window.env.APP_API_URL}/booking/${id}`,{
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${auth0Client.getAccessToken()}`
+            }
+        });
+        let response = await result;
+        if (!response.ok) { console.log("Could not delete") }else {console.log("Deleted ok!")}
+    }
+
 
 
   return (
@@ -82,6 +97,8 @@ function BookingList() {
                                 <span>ending at {moment(b.toTime).format('DD.MM.YY HH:mm')} </span>
                                 <span>(duration: {moment(b.fromTime).to(moment(b.toTime), true) }) </span>
                                 <span>[{b.id}] </span>
+                                <span onClick={deleteBooking(b.id)}>Delete?</span>
+
                             </li>
                         )
                     })
