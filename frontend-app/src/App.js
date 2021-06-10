@@ -83,8 +83,8 @@ class App extends Component {
 
                 <p>What to do?</p>
                 <ul>
-                    <li><a href={`https://entrasso-${window.env.APP_ENVIRONMENT_NAME}.entraos.io/sso/signup`}>Signup</a>
-                    </li>
+                    <li><a href={`https://entrasso-${window.env.APP_ENVIRONMENT_NAME}.entraos.io/sso/signup`}>Signup</a></li>
+                    <li><a href={`https://entrasso-${window.env.APP_ENVIRONMENT_NAME}.entraos.io/welcome`}>Entrasso Welcome</a></li>
                 </ul>
                 <FetchExamples/>
                 <BookingList/>
