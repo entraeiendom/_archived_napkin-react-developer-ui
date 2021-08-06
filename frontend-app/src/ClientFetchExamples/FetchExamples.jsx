@@ -90,10 +90,11 @@ function FetchExamples() {
                     rooms
                         .sort((a, b) => a.name > b.name)
                         .map((room, i) => {
+                            var price = room.priceList.Hourly ? room.priceList.Hourly.net_price : "?";
                             return (
                                 <li key={i}>
                                     <span>{room.name} med resourceId {room.resourceId} tilhører slackchannel {room.slackChannelName}.
-                                        Kapasitet på {room.maxPersons} og timepris {room.priceList.Hourly ? room.priceList.Hourly.net_price : room.priceList}</span>
+                                        Kapasitet på {room.maxPersons} og timepris {price}</span>
                                 </li>
                             )
                         })
