@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import auth0Client from "../Auth";
 
 // Documentation available at https://swagger-devtest.entraos.io/
@@ -93,7 +93,7 @@ function FetchExamples() {
                             return (
                                 <li key={i}>
                                     <span>{room.name} med resourceId {room.resourceId} tilhører slackchannel {room.slackChannelName}.
-                                        Kapasitet på {room.maxPersons} og timepris {room.priceList.Hourly.net_price}</span>
+                                        Kapasitet på {room.maxPersons} og timepris {room.priceList.Hourly ? room.priceList.Hourly.net_price : room.priceList}</span>
                                 </li>
                             )
                         })
