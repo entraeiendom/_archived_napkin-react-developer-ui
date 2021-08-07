@@ -8,8 +8,8 @@
     "moment": "^2.29.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1",
+    "react-router": "4.3.1",
+    "react-router-dom": "4.3.1",
     "react-s-alert": "^1.4.1",
     "react-scripts": "4.0.3",
     "simple-console-logger": "^2.0.2"
